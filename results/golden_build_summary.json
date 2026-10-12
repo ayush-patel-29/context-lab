@@ -1,0 +1,24 @@
+{
+  "total_goldens": 300,
+  "by_split": {
+    "dev": 20,
+    "test": 280
+  },
+  "by_label": {
+    "CONTRADICT": 64,
+    "NO_EVIDENCE": 112,
+    "SUPPORT": 124
+  },
+  "source_claim_files": {
+    "claims_dev.jsonl": 300
+  },
+  "excluded_unlabeled_claim_count": 0,
+  "excluded_unlabeled_claims": [],
+  "claims_missing_reference_context": [],
+  "claims_with_missing_reference_documents": {},
+  "claims_with_missing_reference_sentences": {},
+  "bm25_zero_relevant_candidates": 42,
+  "bm25_incomplete_candidate_coverage": 52,
+  "candidate_queries_without_claim_labels": 0,
+  "claim_labels_without_candidate_queries": 0
+}
