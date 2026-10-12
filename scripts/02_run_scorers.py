@@ -4,6 +4,9 @@ import time
 from pathlib import Path
 
 from contextlab.jsonl import read_jsonl
+from contextlab.scorers.bm25 import BM25Scorer
+from contextlab.scorers.reranker import RerankerScorer
+from contextlab.scorers.jev import JevScorer
 
 CANDIDATES = Path("data/candidates.jsonl")
 RESULTS = Path("results")
@@ -11,12 +14,14 @@ RESULTS = Path("results")
 
 def make_scorer(name):
     if name == "bm25":
-        from contextlab.scorers.bm25 import BM25Scorer
         return BM25Scorer()
     
     if name == "reranker":
-        from contextlab.scorers.reranker import RerankerScorer
         return RerankerScorer()
+    
+    if name.startswith("jev_"):  # e.g. jev_v1_n30 = wording v1, 30 passages per request
+        _, wording, n = name.split("_")
+        return JevScorer(wording=wording, pairs_per_call=int(n.removeprefix("n")))
     
     raise SystemExit(f"unknown scorer: {name}")
 

@@ -62,7 +62,7 @@ def main():
 
     text = "\n".join(lines)
     print(text)
-    (RESULTS / "table.md").write_text(text + "\n", encoding="utf-8")
+    (RESULTS / f"table_{args.split}.md").write_text(text + "\n", encoding="utf-8")
 
 
 if __name__ == "__main__":
