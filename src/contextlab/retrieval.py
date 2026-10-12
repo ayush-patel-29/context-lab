@@ -42,6 +42,7 @@ def build_candidates(docs, queries, qrels, split_of, k=30, index=None):
                     "bm25_score": score,
                     "bm25_rank": rank,
                     "label": int(did in qrels[qid]),
+                    "n_relevant": len(qrels[qid]),  # total gold passages, needed for nDCG/recall
                 }
             )
     return rows
